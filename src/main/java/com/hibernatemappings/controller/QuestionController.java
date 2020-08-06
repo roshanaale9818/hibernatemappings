@@ -25,11 +25,11 @@ public class QuestionController {
 	 @Autowired
 	 QuestionService questionService;
 	 
-	 @GetMapping("/questions")
+	 @GetMapping
 	 public List<Question> getAll(){
 		 return questionService.listAll();
 	 }
-	 @GetMapping("/questions/{id}")
+	 @GetMapping("{id}")
 	 public ResponseEntity<Question> get(@PathVariable Integer id){
 		 try {
 			 Question question = questionService.getById(id);
@@ -56,7 +56,7 @@ public class QuestionController {
 		 
 	 }
 	 
-	 @DeleteMapping("/questions/{id}")
+	 @DeleteMapping("{id}")
 	 public void delete(@PathVariable Integer id) {
 			questionService.delete(id);
 		}

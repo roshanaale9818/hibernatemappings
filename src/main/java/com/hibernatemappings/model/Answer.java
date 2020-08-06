@@ -12,6 +12,9 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,12 +28,16 @@ public class Answer {
 	
 	private String answername;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "question_id")
+	@ManyToOne(fetch = FetchType.LAZY,optional = false)
+	@JoinColumn(name = "question_id",nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
 	private Question question;
 	
 	
-	
+	public Answer() {
+		
+	}
 
 public Answer(int id, String answername, Question question) {
 		super();

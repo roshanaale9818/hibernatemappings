@@ -29,10 +29,9 @@ public class Question {
 
 	private String qname;
 	
-	//{"qname":"roshan khadka}
+
 		
 	@OneToMany(mappedBy = "question")
-//	@JoinColumn(name="question_id",referencedColumnName = "id")
 	private List<Answer> answers;
 
 
